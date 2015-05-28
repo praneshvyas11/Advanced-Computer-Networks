@@ -1,0 +1,99 @@
+Question:
+--------
+Using the vantage point 67.17.82.114 how many ASes are there in the Internet on November
+1 2012? How fast is this number growing over time (Compare the number of ASes for Nov. 1, 
+2012 and next year, November 1 2013)?
+
+Source-Code:
+-----------
+import java.io.BufferedReader;
+
+import java.io.File;
+
+import java.io.FileReader;
+
+import java.io.FileWriter;
+
+import java.util.HashSet;
+
+import java.util.Iterator;
+
+public class AutonomousSystemList { 
+
+public static void main(String[] args) throws Exception { 
+
+Networks/Net Assignment/2013data");
+
+Networks/Net Assignment/OutputFile/ASList.txt"); 
+
+// TODO Auto-generated method stub 
+
+File InputFile = new File("C:/Education/1st quarter/Advanced Computer 
+
+FileReader FReader = new FileReader(InputFile); 
+
+File OutputFile = new File("C:/Education/1st quarter/Advanced Computer 
+
+FileWriter Out = new FileWriter(OutputFile); 
+
+BufferedReader BuffRead = new BufferedReader(FReader); 
+
+String line; 
+
+line=BuffRead.readLine();
+
+String[] abc; 
+
+HashSet<Integer> SetOfAS = new HashSet<Integer>();
+
+        while(line!=null)
+
+        {
+
+        if(line.contains("FROM: 67.17.82.114"))
+
+        {
+
+        line=BuffRead.readLine();
+
+        line=BuffRead.readLine();
+
+        line=BuffRead.readLine();
+
+        abc = line.split(" ");
+
+        
+
+        for(int i =1; i<abc.length; i++)
+
+        {
+
+        if(!abc[i].contains("{"))
+
+        SetOfAS.add(Integer.parseInt(abc[i]));
+
+        }
+
+        
+
+        }
+
+        line=BuffRead.readLine();
+
+        }
+
+        Iterator<Integer> iter = SetOfAS.iterator();
+
+        while(iter.hasNext()) 
+
+Out.append(iter.next().toString() + "\n"); 
+
+Out.flush(); 
+
+System.out.println("Number of Autonomous Systems : " + SetOfAS.size()); 
+
+Out.close(); 
+
+}
+
+}
